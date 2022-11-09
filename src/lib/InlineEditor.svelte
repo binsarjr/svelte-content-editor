@@ -1,20 +1,21 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	export let html: string = '';
+	export let value = '';
+	export let html = false;
 	export let placeholder: string = '';
 
 	let element: HTMLDivElement;
 	const elementClass = '__inlineEditor_' + Math.floor(Math.random() * 9999999999999);
 
 	// make div element keep can click when data is empty
-	$: if (html == '' || /^<br\/?>$/.test(html)) {
-		if (placeholder) html = placeholder;
-		else html = '&nbsp;';
+	$: if (value == '' || /^<\s{0,}br\s{0,}\/?\s{0,}>$/.test(value)) {
+		if (placeholder) value = placeholder;
+		else value = '&nbsp;';
 	}
 
 	function onClick(e: MouseEvent) {
-		if (placeholder === html) {
+		if (placeholder === value) {
 			document.execCommand('selectAll', false);
 		}
 	}
@@ -35,14 +36,18 @@
 <div
 	contenteditable
 	class={elementClass}
-	class:italic={html === placeholder}
+	class:italic={value === placeholder}
+	class:text-only={!html}
 	bind:this={element}
-	bind:innerHTML={html}
+	bind:innerHTML={value}
 	on:click={onClick}
 />
 
 <style>
 	.italic {
 		font-style: italic;
+	}
+	.text-only {
+		white-space: pre-wrap;
 	}
 </style>
