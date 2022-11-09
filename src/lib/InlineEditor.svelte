@@ -2,8 +2,11 @@
 	import { onMount } from 'svelte';
 
 	export let value = '';
+	/**
+	 * if true you will get html format
+	 */
 	export let html = false;
-	export let placeholder: string = '';
+	export let placeholder = '';
 
 	let element: HTMLDivElement;
 	const elementClass = '__inlineEditor_' + Math.floor(Math.random() * 9999999999999);

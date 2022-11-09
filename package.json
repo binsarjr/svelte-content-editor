@@ -1,6 +1,15 @@
 {
 	"name": "svelte-content-editor",
 	"version": "0.0.1",
+	"author": {
+		"name": "Binsar Dwi Jasuma",
+		"email": "binsarjr121@gmail.com",
+		"url": "https://github.com/binsarjr"
+	},
+	"description": "Simple wysiwyg editor for Svelte/Sveltekit",
+	"repository": {
+		"url": "https://github.com/binsarjr/svelte-content-editor"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
